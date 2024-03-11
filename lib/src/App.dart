@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'login_views/LoginView.dart';
+import 'login_views/RegisterView.dart';
 
 class App extends StatelessWidget
 {
@@ -14,7 +15,7 @@ class App extends StatelessWidget
   {
     return MaterialApp(
       title: 'Flutter Chat',
-      home: LoginView(),
+      home: RegisterView(),
     );
   }
 }

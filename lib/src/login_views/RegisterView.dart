@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../custom_views/NameBox.dart';
 import 'RFInputText.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({Key? key}) : super(key: key);
+class RegisterView extends StatelessWidget {
+  const RegisterView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context)
@@ -31,21 +30,27 @@ class LoginView extends StatelessWidget {
               sTitulo: 'Contraseña:',
               icIzquierda: Icon(Icons.password),
             ),
+            RFInputText(
+              iLongitudPalabra: 20,
+              sHelperText: 'Escriba su contraseña',
+              sTitulo: 'Repetir Contraseña:',
+              icIzquierda: Icon(Icons.password),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 OutlinedButton(
-                    onPressed: () {
-                    print('>>>>>>>>>>>>>LOGIN');
-                    },
-                    child: Text('Login'),
+                  onPressed: () {
+                    print('>>>>>>>>>>>>>REGISTRO ACEPTAR');
+                  },
+                  child: Text('Aceptar'),
                 ),
                 OutlinedButton(
                   onPressed: () {
 
-                    print('>>>>>>>>>>>>>REGISTRO');
+                    print('>>>>>>>>>>>>>REGISTRO CANCELAR');
                   },
-                  child: Text('Registro'),
+                  child: Text('Cancelar'),
                 )
               ],
             )
