@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "424700093925",
+    "project_id": "chat-de-flutter",
+    "storage_bucket": "chat-de-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424700093925:android:ae59f89e12c7ab8b4ebb0c",
+        "android_client_info": {
+          "package_name": "belinchon.sergio.chat_de_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIf-0ybpTmS7yWQ-gMMowUIk-bUQPUGK4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
