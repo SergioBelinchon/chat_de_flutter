@@ -15,6 +15,12 @@ class App extends StatelessWidget
   {
     return MaterialApp(
       title: 'Flutter Chat',
+      initialRoute: '/loginview',
+      routes: {
+        '/loginview': (context) => const LoginView(),
+        '/registerview': (context) => const RegisterView(),
+
+      },
       home: RegisterView(),
     );
   }

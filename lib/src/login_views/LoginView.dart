@@ -1,3 +1,4 @@
+import 'package:chat_de_flutter/src/login_views/RegisterView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -42,8 +43,9 @@ class LoginView extends StatelessWidget {
                 ),
                 OutlinedButton(
                   onPressed: () {
+                    Navigator.of(context).popAndPushNamed('/registerview');
 
-                    print('>>>>>>>>>>>>>REGISTRO');
+                    //print('>>>>>>>>>>>>>REGISTRO');
                   },
                   child: Text('Registro'),
                 )

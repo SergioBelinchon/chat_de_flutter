@@ -47,7 +47,6 @@ class RegisterView extends StatelessWidget {
                 ),
                 OutlinedButton(
                   onPressed: () {
-
                     print('>>>>>>>>>>>>>REGISTRO CANCELAR');
                   },
                   child: Text('Cancelar'),
