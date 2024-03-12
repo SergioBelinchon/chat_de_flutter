@@ -1,4 +1,5 @@
 
+import 'package:chat_de_flutter/src/login_views/LoginPhoneView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -16,11 +17,11 @@ class App extends StatelessWidget
   {
     return MaterialApp(
       title: 'Chatdar',
-      initialRoute: '/loginview',
+      initialRoute: '/loginphoneview',
       routes: {
         '/loginview': (context) => const LoginView(),
         '/registerview': (context) => RegisterView(),
-        '/homevacio' : (context) => HomeVacio(),
+        '/loginphoneview' : (context) => LoginPhoneView(),
       },
       home: RegisterView(),
     );

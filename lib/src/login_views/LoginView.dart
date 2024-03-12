@@ -18,7 +18,7 @@ class LoginView extends StatelessWidget
           password: password
       );
       print('ME HE LOGUEADO!');
-      //Navigator.of(context).popAndPushNamed('/homevacio');
+      Navigator.of(context).popAndPushNamed('/homevacio');
 
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -63,14 +63,16 @@ class LoginView extends StatelessWidget
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 OutlinedButton(
-                    onPressed: () async{
+                    onPressed: ()
+                    {
                       print('>>>>>>>>>>>>>LOGIN ' + inputUser.getText() + ' ' + inputPassword.getText());
                       loginPress(inputUser.getText(), inputPassword.getText(), context);
                     },
                     child: Text('Login'),
                 ),
                 OutlinedButton(
-                  onPressed: () {
+                  onPressed: ()
+                  {
                     Navigator.of(context).popAndPushNamed('/registerview');
 
 
