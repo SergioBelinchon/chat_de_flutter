@@ -11,7 +11,7 @@ class HomeView extends StatefulWidget {
 
   class _homeViewState extends State<HomeView>
   {
-
+/*
   FirebaseFirestore db = FirebaseFirestore.instance;
   String sNombre = 'AQUI IRA EL NOMBRE';
 
@@ -21,7 +21,7 @@ class HomeView extends StatefulWidget {
   super.initState();
   getProfile();
   }
-
+*/
 
   void getProfile() async
   {
@@ -40,7 +40,7 @@ class HomeView extends StatefulWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('HOME VIEW BIENVENIDO' +sNombre),
+            Text('HOME VIEW BIENVENIDO'),
           ],
         ),
       ),
