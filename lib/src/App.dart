@@ -19,7 +19,7 @@ class App extends StatelessWidget
       initialRoute: '/loginview',
       routes: {
         '/loginview': (context) => const LoginView(),
-        '/registerview': (context) => const RegisterView(),
+        '/registerview': (context) => RegisterView(),
         '/homevacio' : (context) => HomeVacio(),
       },
       home: RegisterView(),
