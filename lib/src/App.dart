@@ -15,7 +15,7 @@ class App extends StatelessWidget
   Widget build(BuildContext context)
   {
     return MaterialApp(
-      title: 'Flutter Chat',
+      title: 'Chatdar',
       initialRoute: '/loginview',
       routes: {
         '/loginview': (context) => const LoginView(),
