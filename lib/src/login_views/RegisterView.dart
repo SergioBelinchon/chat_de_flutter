@@ -40,16 +40,19 @@ class RegisterView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 OutlinedButton(
-                  onPressed: () {
+                  onPressed: ()
+                  {
+                    //Navigator.of(context).popAndPushNamed('homeview');
                     print('>>>>>>>>>>>>>REGISTRO ACEPTAR');
                   },
                   child: Text('Aceptar'),
                 ),
                 OutlinedButton(
-                  onPressed: () {
+                  onPressed: ()
+                  {
                     Navigator.of(context).popAndPushNamed('/loginview');
 
-                    // print('>>>>>>>>>>>>>REGISTRO CANCELAR');
+                   print('>>>>>>>>>>>>>REGISTRO CANCELAR');
                   },
                   child: Text('Cancelar'),
                 )
