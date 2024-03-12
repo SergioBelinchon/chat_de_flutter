@@ -10,7 +10,7 @@ class LoginView extends StatelessWidget
 {
   const LoginView({Key? key}) : super(key: key);
 
-  void loginPress(String emailAddress, String password) async
+  void loginPress(String emailAddress, String password, BuildContext context) async
   {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -18,6 +18,7 @@ class LoginView extends StatelessWidget
           password: password
       );
       print('ME HE LOGUEADO!');
+      //Navigator.of(context).popAndPushNamed('/homevacio');
 
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -32,8 +33,20 @@ class LoginView extends StatelessWidget
   Widget build(BuildContext context)
   {
 
-    String sUsername = 'sergio@sergio.com';
-    String sPassword = '123456789';
+    RFInputText inputUser = RFInputText(
+      iLongitudPalabra: 20,
+      sHelperText: 'Escriba su usuario',
+      sTitulo: 'Usuario:',
+      icIzquierda: Icon(Icons.account_circle_outlined),
+    );
+
+    RFInputText inputPassword = RFInputText(
+      iLongitudPalabra: 20,
+      sHelperText: 'Escriba su contraseña',
+      sTitulo: 'Contraseña:',
+      icIzquierda: Icon(Icons.password),
+      blIsPasswordInput: true,
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -44,28 +57,15 @@ class LoginView extends StatelessWidget
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            RFInputText(
-              sValorInicial: sUsername,
-              iLongitudPalabra: 20,
-              sHelperText: 'Escriba su usuario',
-              sTitulo: 'Usuario:',
-              icIzquierda: Icon(Icons.account_circle_outlined),
-            ),
-            RFInputText(
-              sValorInicial: sPassword,
-              iLongitudPalabra: 20,
-              sHelperText: 'Escriba su contraseña',
-              sTitulo: 'Contraseña:',
-              icIzquierda: Icon(Icons.password),
-            ),
+            inputUser,
+            inputPassword,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 OutlinedButton(
                     onPressed: () async{
-                     // Navigator.of(context).popAndPushNamed('/homevacio');
-                      print('>>>>>>>>>>>>>LOGIN $sUsername $sPassword');
-                      loginPress(sUsername, sPassword);
+                      print('>>>>>>>>>>>>>LOGIN ' + inputUser.getText() + ' ' + inputPassword.getText());
+                      loginPress(inputUser.getText(), inputPassword.getText(), context);
                     },
                     child: Text('Login'),
                 ),

@@ -9,24 +9,36 @@ class RFInputText extends StatelessWidget
   final String sTitulo;
   final Icon icIzquierda;
   final Icon icDerecha;
+  final bool  blIsPasswordInput;
 
 
-  const RFInputText({Key? key,
+   RFInputText({Key? key,
     this.sValorInicial = '',
     this.iLongitudPalabra = 20,
     this.sHelperText = '',
     this.sTitulo = '',
     this.icDerecha = const Icon(Icons.check_circle),
-    this.icIzquierda = const Icon(Icons.favorite)}) : super (key:key);
+    this.icIzquierda = const Icon(Icons.favorite),
+    this.blIsPasswordInput = false}) : super (key:key);
+
+  TextEditingController _controller = TextEditingController();
+
+  String getText()
+  {
+    return _controller.text;
+  }
 
   @override
   Widget build(BuildContext context)
   {
 
     return TextFormField(
+      controller: _controller,
       cursorColor: Colors.lightBlueAccent,
-      initialValue: this.sValorInicial,
       maxLength: iLongitudPalabra,
+      obscureText: blIsPasswordInput,
+      autocorrect: !blIsPasswordInput,
+      enableSuggestions: !blIsPasswordInput,
       decoration: InputDecoration(
         icon: this.icIzquierda,
         labelText: this.sTitulo,
