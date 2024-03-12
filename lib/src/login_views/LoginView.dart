@@ -18,7 +18,7 @@ class LoginView extends StatelessWidget
           password: password
       );
       print('ME HE LOGUEADO!');
-      Navigator.of(context).popAndPushNamed('/homevacio');
+      Navigator.of(context).popAndPushNamed('/home');
 
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

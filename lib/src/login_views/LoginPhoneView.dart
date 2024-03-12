@@ -33,7 +33,7 @@ class LoginPhoneView extends StatefulWidget {
         {
           await FirebaseAuth.instance.signInWithCredential(credential);
           print('ME HE LOGEADO!');
-          //Navigator.of(context).popAndPushNamed('/home');
+          Navigator.of(context).popAndPushNamed('/home');
         },
         verificationFailed: (FirebaseAuthException e)
         {
@@ -62,6 +62,8 @@ class LoginPhoneView extends StatefulWidget {
       // Sign the user in (or link) with the credential
       await FirebaseAuth.instance.signInWithCredential(credential);
       print('ME HE LOGEADO!');
+      Navigator.of(context).popAndPushNamed('/home');
+
     }
 
   @override

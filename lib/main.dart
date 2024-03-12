@@ -12,6 +12,7 @@ void main() async
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  /*
   FirebaseAuth.instance
       .authStateChanges()
       .listen((User? user) {
@@ -21,6 +22,7 @@ void main() async
       print('User is signed in!');
     }
   });
+*/
 
   runApp(const App());
 }
