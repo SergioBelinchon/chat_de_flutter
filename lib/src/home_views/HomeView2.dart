@@ -1,36 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomeView extends StatefulWidget {
+class HomeView2 extends StatefulWidget
+{
 
   @override
-  State<StatefulWidget> createState() {
-    return _homeViewState();
+  State<StatefulWidget> createState()
+  {
+    return _homeView2State();
   }
 }
 
-  class _homeViewState extends State<HomeView>
-  {
-
-  FirebaseFirestore db = FirebaseFirestore.instance;
-  String sNombre = 'AQUI IRA EL NOMBRE';
+class _homeView2State extends State<HomeView2>
+{
+  String sNombre = '--';
 
   @override
-  Widget initState()
-  {
-  super.initState();
-  getProfile();
-  }
-
-
-  void getProfile() async
-  {
-
-  }
-
-  @override
-  Widget build(BuildContext context)
-  {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Chatdar'),
@@ -46,6 +32,5 @@ class HomeView extends StatefulWidget {
       ),
     );
   }
-  }
 
-
+}

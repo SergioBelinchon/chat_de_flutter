@@ -1,4 +1,4 @@
-import 'package:chat_de_flutter/src/login_views/RFInputText.dart';
+import 'package:chat_de_flutter/src/custom_views/RFInputText.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

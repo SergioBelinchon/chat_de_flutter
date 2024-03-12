@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 import '../custom_views/RFInputText.dart';
 
-class RegisterView extends StatelessWidget
+class RegisterView2 extends StatelessWidget
 {
 
-  RegisterView({Key? key}) : super(key: key);
+  RegisterView2({Key? key}) : super(key: key);
 
   var txt = TextEditingController();
 
@@ -44,22 +44,22 @@ class RegisterView extends StatelessWidget
     );
 
     RFInputText inputPassword = RFInputText(
-    iLongitudPalabra: 20,
-    sHelperText: 'Escriba su contraseña',
-    sTitulo: 'Contraseña:',
-    icIzquierda: Icon(Icons.password),
+      iLongitudPalabra: 20,
+      sHelperText: 'Escriba su contraseña',
+      sTitulo: 'Contraseña:',
+      icIzquierda: Icon(Icons.password),
       blIsPasswordInput: true,
     );
 
-   RFInputText inputPasswordRep = RFInputText(
-    iLongitudPalabra: 20,
-    sHelperText: 'Escriba su contraseña',
-    sTitulo: 'Repetir Contraseña:',
-    icIzquierda: Icon(Icons.password),
-     blIsPasswordInput: true,
+    RFInputText inputPasswordRep = RFInputText(
+      iLongitudPalabra: 20,
+      sHelperText: 'Escriba su contraseña',
+      sTitulo: 'Repetir Contraseña:',
+      icIzquierda: Icon(Icons.password),
+      blIsPasswordInput: true,
     );
 
-   TextField txtMensajes = TextField(controller: txt, readOnly: true, style: TextStyle(color: Colors.red, fontSize: 18));
+    TextField txtMensajes = TextField(controller: txt, readOnly: true, style: TextStyle(color: Colors.red, fontSize: 18));
 
     return Scaffold(
       appBar: AppBar(
@@ -80,13 +80,13 @@ class RegisterView extends StatelessWidget
                   onPressed: ()
                   {
                     if(inputPassword.getText() == inputPasswordRep.getText())
-                      {
-                        registerPressed(inputUser.getText(), inputPassword.getText(), context);
-                      }
+                    {
+                      registerPressed(inputUser.getText(), inputPassword.getText(), context);
+                    }
                     else
-                      {
-                        txt.text = 'ERROR, CONTRASEÑAS NO COINCIDEN';
-                      }
+                    {
+                      txt.text = 'ERROR, CONTRASEÑAS NO COINCIDEN';
+                    }
                     //Navigator.of(context).popAndPushNamed('homeview');
                     //print('>>>>>>>>>>>>>REGISTRO ACEPTAR');
                   },
@@ -97,7 +97,7 @@ class RegisterView extends StatelessWidget
                   {
                     Navigator.of(context).popAndPushNamed('/loginview');
 
-                   print('>>>>>>>>>>>>>REGISTRO CANCELAR');
+                    print('>>>>>>>>>>>>>REGISTRO CANCELAR');
                   },
                   child: Text('Cancelar'),
                 )

@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import '../custom_views/NameBox.dart';
 import '../custom_views/RFInputText.dart';
 
-class LoginView extends StatelessWidget
+class LoginView2 extends StatelessWidget
 {
-  const LoginView({Key? key}) : super(key: key);
+  const LoginView2({Key? key}) : super(key: key);
 
   void loginPress(String emailAddress, String password, BuildContext context) async
   {
@@ -63,12 +63,12 @@ class LoginView extends StatelessWidget
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 OutlinedButton(
-                    onPressed: ()
-                    {
-                      print('>>>>>>>>>>>>>LOGIN ' + inputUser.getText() + ' ' + inputPassword.getText());
-                      loginPress(inputUser.getText(), inputPassword.getText(), context);
-                    },
-                    child: Text('Login'),
+                  onPressed: ()
+                  {
+                    print('>>>>>>>>>>>>>LOGIN ' + inputUser.getText() + ' ' + inputPassword.getText());
+                    loginPress(inputUser.getText(), inputPassword.getText(), context);
+                  },
+                  child: Text('Login'),
                 ),
                 OutlinedButton(
                   onPressed: ()
