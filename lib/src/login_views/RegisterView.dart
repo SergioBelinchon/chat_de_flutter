@@ -47,7 +47,9 @@ class RegisterView extends StatelessWidget {
                 ),
                 OutlinedButton(
                   onPressed: () {
-                    print('>>>>>>>>>>>>>REGISTRO CANCELAR');
+                    Navigator.of(context).popAndPushNamed('/loginview');
+
+                    // print('>>>>>>>>>>>>>REGISTRO CANCELAR');
                   },
                   child: Text('Cancelar'),
                 )

@@ -37,13 +37,17 @@ class LoginView extends StatelessWidget {
               children: [
                 OutlinedButton(
                     onPressed: () {
-                    print('>>>>>>>>>>>>>LOGIN');
+
+                      Navigator.of(context).popAndPushNamed('/homevacio');
+                      //print('>>>>>>>>>>>>>LOGIN');
                     },
                     child: Text('Login'),
                 ),
                 OutlinedButton(
                   onPressed: () {
                     Navigator.of(context).popAndPushNamed('/registerview');
+
+                    //Navigator.of(context).pushNamed('/registerview');
 
                     //print('>>>>>>>>>>>>>REGISTRO');
                   },

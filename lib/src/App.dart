@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'login_views/HomeVacio.dart';
 import 'login_views/LoginView.dart';
 import 'login_views/RegisterView.dart';
 
@@ -19,7 +20,7 @@ class App extends StatelessWidget
       routes: {
         '/loginview': (context) => const LoginView(),
         '/registerview': (context) => const RegisterView(),
-
+        '/homevacio' : (context) => HomeVacio(),
       },
       home: RegisterView(),
     );
