@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../fb_objects/Perfil.dart';
 
 class HomeView2 extends StatefulWidget
 {
@@ -18,33 +21,30 @@ class _HomeView2State extends State<HomeView2>
   String sNombre = '--';
   bool blIsBottonVisble = true;
 
-  void actualizarNombre()
+  void actualizarNombre() async
   {
 
-    final docRef = db.collection('perfiles').doc('Rs4B0yEhP0jtmQ216Jrl');
+    String? idUser = FirebaseAuth.instance.currentUser?.uid;
+    final docRef = db.collection('perfiles')
+        .doc(idUser).withConverter(fromFirestore: Perfil.fromFirestore,
+        toFirestore: (Perfil perfil, _) => perfil.toFirestore());
 
-    docRef.get().then(
-            (DocumentSnapshot doc)
-        {
-          if(doc.exists)
-            {
-              final data = doc.data() as Map<String, dynamic>;
-              print('------------------------------>>>>>>>'+data.toString()+ '   '+doc.get('name')+'  '+data['name']);
+    final docSnap = await docRef.get();
+    final perfilUsuario = docSnap.data();
 
-            }
+    if(perfilUsuario != null)
+    {
+      print(perfilUsuario.age);
 
-          setState(()
-          {
-            sNombre = doc.get('name');
-            blIsBottonVisble = false;
-          });
-       },
-        onError: (e) => print('Error getting documents: $e'),
-    );
+      setState(() {
+        sNombre = perfilUsuario.name!;
+      });
+    }
+    else
+    {
+      print('No such document.');
+    }
 
-    setState(() {
-      sNombre = 'ESPERANDO';
-    });
   }
 
   @override
