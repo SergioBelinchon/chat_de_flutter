@@ -6,8 +6,6 @@ class Perfil {
   final String? country;
   final int? age;
 
-
-
   Perfil({
     this.name= '',
     this.city= '',

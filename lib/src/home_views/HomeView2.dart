@@ -3,8 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../fb_objects/Perfil.dart';
-
 class HomeView2 extends StatefulWidget
 {
 
@@ -21,12 +19,29 @@ class _HomeView2State extends State<HomeView2>
   String sNombre = '--';
   bool blIsBottonVisble = true;
 
-  void actualizarNombre() async
+  void actualizarNombre()
   {
 
     String? idUser = FirebaseAuth.instance.currentUser?.uid;
-    final docRef = db.collection('perfiles')
-        .doc(idUser).withConverter(fromFirestore: Perfil.fromFirestore,
+    final docRef = db.collection('perfiles').doc(idUser);
+
+    docRef.get().then(
+        (DocumentSnapshot doc)
+            {
+              if(doc.exists)
+                {
+                  final data = doc.data() as Map<String, dynamic>;
+                  print('------------------>>>>>>>>>>> '+data.toString()+'  '+doc.get('name'));
+                }
+              setState(() {
+                sNombre = 'ESPERANDO';
+              });
+            },
+      onError: (e) => print('------------------------------------->>>>>>><Error getting document: $e'),
+    );
+    /*
+    final docRef = db.collection('perfiles').
+        doc(idUser).withConverter(fromFirestore: Perfil.fromFirestore,
         toFirestore: (Perfil perfil, _) => perfil.toFirestore());
 
     final docSnap = await docRef.get();
@@ -36,14 +51,12 @@ class _HomeView2State extends State<HomeView2>
     {
       print(perfilUsuario.age);
 
-      setState(() {
-        sNombre = perfilUsuario.name!;
-      });
+
     }
     else
     {
       print('No such document.');
-    }
+    }*/
 
   }
 
