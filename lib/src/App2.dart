@@ -16,7 +16,7 @@ class App2 extends StatelessWidget {
     }
     else {
       Fluttertoast.showToast(
-        msg: 'BIENVENIDO A LA APP' + FirebaseAuth.instance.currentUser!.email!,
+        msg: 'BIENVENIDO A LA APP ' +FirebaseAuth.instance.currentUser!.email!,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,

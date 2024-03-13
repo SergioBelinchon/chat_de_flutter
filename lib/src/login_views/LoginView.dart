@@ -1,9 +1,6 @@
-import 'package:chat_de_flutter/src/login_views/RegisterView.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../custom_views/NameBox.dart';
 import '../custom_views/RFInputText.dart';
 
 class LoginView extends StatelessWidget
