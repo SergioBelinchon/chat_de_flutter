@@ -29,6 +29,7 @@ class _HomeView2State extends State<HomeView2>
         .doc(idUser).withConverter(fromFirestore: Perfil.fromFirestore,
         toFirestore: (Perfil perfil, _) => perfil.toFirestore());
 
+
     final docSnap = await docRef.get();
     final perfilUsuario = docSnap.data();
     if(perfilUsuario != null)

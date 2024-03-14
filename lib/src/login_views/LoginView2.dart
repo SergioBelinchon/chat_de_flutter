@@ -1,3 +1,4 @@
+import 'package:chat_de_flutter/src/App.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,45 +6,38 @@ import '../custom_views/RFInputText.dart';
 
 class LoginView2 extends StatelessWidget
 {
-  const LoginView2({Key? key}) : super(key: key);
+  LoginView2({Key? key}) : super(key: key);
 
-  void loginPress(String emailAddress, String password, BuildContext context) async
+  RFInputText input1 = RFInputText(sTitulo: 'Usuario',);
+  RFInputText input2 = RFInputText(sTitulo: 'Contraseña', blIsPasswordInput: true,);
+
+  void btn1Press(BuildContext context) async
   {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailAddress,
-          password: password
+          email: input1.getText(),
+          password: input2.getText(),
       );
-      print('ME HE LOGUEADO!');
-      Navigator.of(context).popAndPushNamed('/Home');
+      Navigator.of(context).popAndPushNamed('/OnBoarding');
 
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
+      print('------------->>>>>>ERROR DE CREACION DE USUARIO '+ e.code);
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exits for that email.');
       }
     }
+    catch(e)
+    {
+      print(e);
+    }
+    print('USUARIO CREADO CORRECTAMENTE');
   }
 
   @override
   Widget build(BuildContext context)
   {
-
-    RFInputText inputUser = RFInputText(
-      iLongitudPalabra: 20,
-      sHelperText: 'Escriba su usuario',
-      sTitulo: 'Usuario:',
-      icIzquierda: Icon(Icons.account_circle_outlined),
-    );
-
-    RFInputText inputPassword = RFInputText(
-      iLongitudPalabra: 20,
-      sHelperText: 'Escriba su contraseña',
-      sTitulo: 'Contraseña:',
-      icIzquierda: Icon(Icons.password),
-      blIsPasswordInput: true,
-    );
 
     return Scaffold(
       appBar: AppBar(
@@ -54,16 +48,15 @@ class LoginView2 extends StatelessWidget
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            inputUser,
-            inputPassword,
+            input1,
+            input2,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 OutlinedButton(
                   onPressed: ()
                   {
-                    print('>>>>>>>>>>>>>LOGIN ' + inputUser.getText() + ' ' + inputPassword.getText());
-                    loginPress(inputUser.getText(), inputPassword.getText(), context);
+                    btn1Press(context);
                   },
                   child: Text('Login'),
                 ),
@@ -72,8 +65,6 @@ class LoginView2 extends StatelessWidget
                   {
                     Navigator.of(context).popAndPushNamed('/Registro');
 
-
-                    print('>>>>>>>>>>>>>REGISTRO');
                   },
                   child: Text('Registro'),
                 )
@@ -83,6 +74,5 @@ class LoginView2 extends StatelessWidget
         ),
       ),
     );
-
   }
 }

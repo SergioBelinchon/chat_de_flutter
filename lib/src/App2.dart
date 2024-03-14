@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'home_views/OnBoardingView.dart';
 import 'login_views/LoginView2.dart';
 import 'login_views/RegisterView2.dart';
 
@@ -28,7 +29,7 @@ class App2 extends StatelessWidget {
         fontSize: 20.0,
       );
 
-      return '/Home';
+      return '/OnBoarding';
     }
   }
 
@@ -40,6 +41,7 @@ class App2 extends StatelessWidget {
           '/Login': (context) => LoginView2(),
           '/Registro': (context) => RegisterView2(),
           '/Home': (context) => HomeView2(),
+          '/OnBoarding': (context) => OnBoardingView(),
         }
     );
   }
