@@ -26,8 +26,8 @@ class _HomeView2State extends State<HomeView2>
     //final perfilesRef = db.collection('perfiles').doc();
     String? idUser = 'Rs4B0yEhP0jtmQ216Jrl';
     final docRef = db.collection('perfiles')
-        .doc(idUser).withConverter(fromFirestore: Perfil2.fromFirestore,
-        toFirestore: (Perfil2 perfil2, _) => perfil2.toFirestore());
+        .doc(idUser).withConverter(fromFirestore: Perfil.fromFirestore,
+        toFirestore: (Perfil perfil, _) => perfil.toFirestore());
 
     final docSnap = await docRef.get();
     final perfilUsuario = docSnap.data();
@@ -43,7 +43,7 @@ class _HomeView2State extends State<HomeView2>
         print('No such document.');
       }
 
-  }
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -65,10 +65,17 @@ class _HomeView2State extends State<HomeView2>
              },
               child: Text('Refresh'),
             ),
-          ],
+            OutlinedButton(
+                onPressed:()
+              {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.of(context).popAndPushNamed('/Login');
+                  },
+                child: Text('Logout'),
+              ),
+            ],
+         ),
         ),
-      ),
-    );
-  }
-
+      );
+   }
 }

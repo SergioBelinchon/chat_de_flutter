@@ -19,7 +19,7 @@ class RegisterView2 extends StatelessWidget
         email: emailAddress,
         password: password,
       );
-      Navigator.of(context).popAndPushNamed('/loginview');
+      Navigator.of(context).popAndPushNamed('/Login');
 
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -95,7 +95,7 @@ class RegisterView2 extends StatelessWidget
                 OutlinedButton(
                   onPressed: ()
                   {
-                    Navigator.of(context).popAndPushNamed('/loginview');
+                    Navigator.of(context).popAndPushNamed('/Login');
 
                     print('>>>>>>>>>>>>>REGISTRO CANCELAR');
                   },

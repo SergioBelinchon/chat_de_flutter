@@ -1,24 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Perfil2 {
+class Perfil {
   final String? name;
   final String? city;
   final String? country;
   final int? age;
 
-  Perfil2({
+  Perfil({
     this.name ='',
     this.city ='',
     this.country ='',
     this.age =0,
   });
 
-  factory Perfil2.fromFirestore(
+  factory Perfil.fromFirestore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options,
       ) {
     final data = snapshot.data();
-    return Perfil2(
+    return Perfil(
       name: data?['name'],
       city: data?['city'],
       country: data?['country'],

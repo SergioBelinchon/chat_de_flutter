@@ -1,9 +1,6 @@
-import 'package:chat_de_flutter/src/login_views/RegisterView.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../custom_views/NameBox.dart';
 import '../custom_views/RFInputText.dart';
 
 class LoginView2 extends StatelessWidget
@@ -18,7 +15,7 @@ class LoginView2 extends StatelessWidget
           password: password
       );
       print('ME HE LOGUEADO!');
-      Navigator.of(context).popAndPushNamed('/home');
+      Navigator.of(context).popAndPushNamed('/Home');
 
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -73,7 +70,7 @@ class LoginView2 extends StatelessWidget
                 OutlinedButton(
                   onPressed: ()
                   {
-                    Navigator.of(context).popAndPushNamed('/registerview');
+                    Navigator.of(context).popAndPushNamed('/Registro');
 
 
                     print('>>>>>>>>>>>>>REGISTRO');

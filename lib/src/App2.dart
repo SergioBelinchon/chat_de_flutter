@@ -6,6 +6,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'login_views/LoginView2.dart';
+import 'login_views/RegisterView2.dart';
+
 class App2 extends StatelessWidget {
 
   const App2({Key? key}) : super (key: key);
@@ -34,8 +37,8 @@ class App2 extends StatelessWidget {
     return MaterialApp(
         initialRoute: isUserLogged(),
         routes: {
-          '/Login': (context) => LoginView(),
-          '/Registro': (context) => RegisterView(),
+          '/Login': (context) => LoginView2(),
+          '/Registro': (context) => RegisterView2(),
           '/Home': (context) => HomeView2(),
         }
     );
