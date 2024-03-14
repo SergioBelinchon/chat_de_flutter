@@ -21,7 +21,32 @@ class _HomeView2State extends State<HomeView2>
 
   void actualizarNombre()
   {
+    //final perfilesRef = db.collection('perfiles').doc();
+    String? idUser = FirebaseAuth.instance.currentUser?.uid;
+    final docRef = db.collection('perfiles').doc('Rs4B0yEhP0jtmQ216Jrl');
+    docRef.get().then(
+        (DocumentSnapshot doc)
+            {
+              if(doc.exists)
+                {
+                  final data = doc.data() as Map<String, dynamic>;
+                  print('------------------------------->>>>>>>>>>>>>>>>>>> '+data.toString()+ ' '+doc.get('name')+ ' '+data['city']);
+                }
+              setState(() {
+                sNombre = doc.get('name') +' de '+doc.get('city');
+                blIsBottonVisble = false;
+              });
+               //
+            },
+      onError: (e) => print ('Error getting document: $e'),
+    );
+    /*setState(() {
+      sNombre ='ESPERANDO';
+    });
 
+     */
+
+/*
     String? idUser = FirebaseAuth.instance.currentUser?.uid;
     final docRef = db.collection('perfiles').doc(idUser);
 
@@ -57,7 +82,7 @@ class _HomeView2State extends State<HomeView2>
     {
       print('No such document.');
     }*/
-
+*/
   }
 
   @override
