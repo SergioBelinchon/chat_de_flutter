@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../fb_objects/Perfil2.dart';
+
 class HomeView2 extends StatefulWidget
 {
 
@@ -19,70 +21,28 @@ class _HomeView2State extends State<HomeView2>
   String sNombre = '--';
   bool blIsBottonVisble = true;
 
-  void actualizarNombre()
+  void actualizarNombre() async
   {
     //final perfilesRef = db.collection('perfiles').doc();
-    String? idUser = FirebaseAuth.instance.currentUser?.uid;
-    final docRef = db.collection('perfiles').doc('Rs4B0yEhP0jtmQ216Jrl');
-    docRef.get().then(
-        (DocumentSnapshot doc)
-            {
-              if(doc.exists)
-                {
-                  final data = doc.data() as Map<String, dynamic>;
-                  print('------------------------------->>>>>>>>>>>>>>>>>>> '+data.toString()+ ' '+doc.get('name')+ ' '+data['city']);
-                }
-              setState(() {
-                sNombre = doc.get('name') +' de '+doc.get('city');
-                blIsBottonVisble = false;
-              });
-               //
-            },
-      onError: (e) => print ('Error getting document: $e'),
-    );
-    /*setState(() {
-      sNombre ='ESPERANDO';
-    });
-
-     */
-
-/*
-    String? idUser = FirebaseAuth.instance.currentUser?.uid;
-    final docRef = db.collection('perfiles').doc(idUser);
-
-    docRef.get().then(
-        (DocumentSnapshot doc)
-            {
-              if(doc.exists)
-                {
-                  final data = doc.data() as Map<String, dynamic>;
-                  print('------------------>>>>>>>>>>> '+data.toString()+'  '+doc.get('name'));
-                }
-              setState(() {
-                sNombre = 'ESPERANDO';
-              });
-            },
-      onError: (e) => print('------------------------------------->>>>>>><Error getting document: $e'),
-    );
-    /*
-    final docRef = db.collection('perfiles').
-        doc(idUser).withConverter(fromFirestore: Perfil.fromFirestore,
-        toFirestore: (Perfil perfil, _) => perfil.toFirestore());
+    String? idUser = 'Rs4B0yEhP0jtmQ216Jrl';
+    final docRef = db.collection('perfiles')
+        .doc(idUser).withConverter(fromFirestore: Perfil2.fromFirestore,
+        toFirestore: (Perfil2 perfil2, _) => perfil2.toFirestore());
 
     final docSnap = await docRef.get();
     final perfilUsuario = docSnap.data();
-
     if(perfilUsuario != null)
-    {
-      print(perfilUsuario.age);
-
-
-    }
+      {
+        print(perfilUsuario.age);
+        setState(() {
+          sNombre = perfilUsuario.name!;
+        });
+      }
     else
-    {
-      print('No such document.');
-    }*/
-*/
+      {
+        print('No such document.');
+      }
+
   }
 
   @override
