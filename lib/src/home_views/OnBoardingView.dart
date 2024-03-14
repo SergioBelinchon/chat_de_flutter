@@ -6,94 +6,123 @@ import 'package:flutter/material.dart';
 import '../custom_views/RFInputText.dart';
 import '../fb_objects/Perfil.dart';
 
-class OnBoardingView extends StatelessWidget
-{
+class OnBoardingView extends StatefulWidget {
 
-  OnBoardingView({Key? key}) : super(key: key);
+  const OnBoardingView({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState()
+  {
+    return _OnBoardingViewState();
+  }
+
+}
+  class _OnBoardingViewState extends State<OnBoardingView>{
+
 
   var txt = TextEditingController();
   FirebaseFirestore db = FirebaseFirestore.instance;
 
+  @override
+  void initState()
+  {
+    super.initState();
+    checkExistingProfile;
+  }
+
+  void checkExistingProfile() async
+  {
+    String? idUser = 'Rs4B0yEhP0jtmQ216Jrl';
+    final docRef = db.collection('perfiles').doc(idUser);
+
+    DocumentSnapshot docSnap = await docRef.get();
+
+    if(docSnap.exists)
+      {
+        Navigator.of(context).popAndPushNamed('/Home');
+      }
+  }
+
   void acceptPressed(String name, String city, String country, int age, BuildContext context) async
   {
-    Perfil perfil = Perfil(name: name, city: city, country: country, age: age);
-    
-    await db.collection('perfiles').doc(FirebaseAuth.instance.currentUser?.uid).set(perfil.toFirestore())
-    .onError((e, _) => print('Error writing document: $e'));
+  Perfil perfil = Perfil(name: name, city: city, country: country, age: age);
 
-    Navigator.of(context).popAndPushNamed('/Home');
+  await db.collection('perfiles').doc(FirebaseAuth.instance.currentUser?.uid).set(perfil.toFirestore())
+      .onError((e, _) => print('Error writing document: $e'));
+
+  Navigator.of(context).popAndPushNamed('/Home');
   }
 
   @override
   Widget build(BuildContext context)
   {
-    RFInputText inputName = RFInputText(
-      iLongitudPalabra: 20,
-      sHelperText: 'Escriba su nombre',
-      sTitulo: 'Nombre:',
-      icIzquierda: Icon(Icons.account_circle_outlined),
-    );
+  RFInputText inputName = RFInputText(
+  iLongitudPalabra: 20,
+  sHelperText: 'Escriba su nombre',
+  sTitulo: 'Nombre:',
+  icIzquierda: Icon(Icons.account_circle_outlined),
+  );
 
-    RFInputText inputCity = RFInputText(
-      iLongitudPalabra: 20,
-      sHelperText: 'Escriba su ciudad',
-      sTitulo: 'Ciudad:',
-      icIzquierda: Icon(Icons.password),
-    );
+  RFInputText inputCity = RFInputText(
+  iLongitudPalabra: 20,
+  sHelperText: 'Escriba su ciudad',
+  sTitulo: 'Ciudad:',
+  icIzquierda: Icon(Icons.password),
+  );
 
-    RFInputText inputCountry = RFInputText(
-      iLongitudPalabra: 20,
-      sHelperText: 'Escriba su país',
-      sTitulo: 'País:',
-      icIzquierda: Icon(Icons.password),
-    );
+  RFInputText inputCountry = RFInputText(
+  iLongitudPalabra: 20,
+  sHelperText: 'Escriba su país',
+  sTitulo: 'País:',
+  icIzquierda: Icon(Icons.password),
+  );
 
-    RFInputText inputAge = RFInputText(
-      iLongitudPalabra: 20,
-      sHelperText: 'Escriba su edad',
-      sTitulo: 'Edad:',
-      icIzquierda: Icon(Icons.password),
-    );
+  RFInputText inputAge = RFInputText(
+  iLongitudPalabra: 20,
+  sHelperText: 'Escriba su edad',
+  sTitulo: 'Edad:',
+  icIzquierda: Icon(Icons.password),
+  );
 
-    TextField txtMensajes = TextField(controller: txt, readOnly: true, style: TextStyle(color: Colors.red, fontSize: 18));
+  TextField txtMensajes = TextField(controller: txt, readOnly: true, style: TextStyle(color: Colors.red, fontSize: 18));
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('On Boarding'),
-      ),
-      backgroundColor: Colors.lightGreenAccent,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            inputName,
-            inputCity,
-            inputCountry,
-            inputAge,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                OutlinedButton(
-                  onPressed: ()
-                  {
-                    acceptPressed(inputName.getText(), inputCity.getText(),inputCountry.getText(), int.parse(inputAge.getText()), context);
-                  },
-                  child: Text('Aceptar'),
-                ),
-                OutlinedButton(
-                  onPressed: ()
-                  {
-                      Navigator.of(context).popAndPushNamed('/Login');
-                    },
-                  child: Text('Cancelar'),
-                )
-              ],
-            ),
-            txtMensajes,
-          ],
-        ),
-      ),
-    );
+  return Scaffold(
+  appBar: AppBar(
+  title: Text('On Boarding'),
+  ),
+  backgroundColor: Colors.lightGreenAccent,
+  body: Center(
+  child: Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+  inputName,
+  inputCity,
+  inputCountry,
+  inputAge,
+  Row(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+  OutlinedButton(
+  onPressed: ()
+  {
+  acceptPressed(inputName.getText(), inputCity.getText(),inputCountry.getText(), int.parse(inputAge.getText()), context);
+  },
+  child: Text('Aceptar'),
+  ),
+  OutlinedButton(
+  onPressed: ()
+  {
+  Navigator.of(context).popAndPushNamed('/Login');
+  },
+  child: Text('Cancelar'),
+  )
+  ],
+  ),
+  txtMensajes,
+  ],
+  ),
+  ),
+  );
 
   }
-}
+  }

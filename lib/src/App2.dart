@@ -32,6 +32,7 @@ class App2 extends StatelessWidget {
         textColor: Colors.white,
         fontSize: 20.0,
       );
+
       return '/OnBoarding';
     }
   }
