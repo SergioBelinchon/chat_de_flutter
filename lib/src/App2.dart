@@ -1,20 +1,24 @@
 import 'package:chat_de_flutter/src/home_views/HomeView2.dart';
 import 'package:chat_de_flutter/src/login_views/LoginView.dart';
 import 'package:chat_de_flutter/src/login_views/RegisterView.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'fb_objects/Perfil.dart';
 import 'home_views/OnBoardingView.dart';
 import 'login_views/LoginView2.dart';
 import 'login_views/RegisterView2.dart';
 
 class App2 extends StatelessWidget {
 
-  const App2({Key? key}) : super (key: key);
+  App2({Key? key}) : super (key: key);
+  FirebaseFirestore db = FirebaseFirestore.instance;
 
-  String isUserLogged() {
+  String isUserLogged()
+  {
     if (FirebaseAuth.instance.currentUser == null) {
       return '/Login';
     }
@@ -28,7 +32,6 @@ class App2 extends StatelessWidget {
         textColor: Colors.white,
         fontSize: 20.0,
       );
-
       return '/OnBoarding';
     }
   }

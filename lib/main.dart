@@ -25,7 +25,7 @@ void main() async
   });
 */
 
-  runApp( App2());
+  runApp(App2());
 }
 
 
