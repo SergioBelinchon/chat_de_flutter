@@ -8,7 +8,7 @@ import '../fb_objects/Perfil.dart';
 
 class OnBoardingView extends StatefulWidget {
 
-  const OnBoardingView({Key? key}) : super(key: key);
+  OnBoardingView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState()
@@ -32,7 +32,9 @@ class OnBoardingView extends StatefulWidget {
 
   void checkExistingProfile() async
   {
-    String? idUser = 'Rs4B0yEhP0jtmQ216Jrl';
+
+    String? idUser = FirebaseAuth.instance.currentUser?.uid;
+    // String? idUser = 'Rs4B0yEhP0jtmQ216Jrl';
     final docRef = db.collection('perfiles').doc(idUser);
 
     DocumentSnapshot docSnap = await docRef.get();
@@ -87,42 +89,41 @@ class OnBoardingView extends StatefulWidget {
   TextField txtMensajes = TextField(controller: txt, readOnly: true, style: TextStyle(color: Colors.red, fontSize: 18));
 
   return Scaffold(
-  appBar: AppBar(
-  title: Text('On Boarding'),
-  ),
-  backgroundColor: Colors.lightGreenAccent,
-  body: Center(
-  child: Column(
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: [
-  inputName,
-  inputCity,
-  inputCountry,
-  inputAge,
-  Row(
-  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  children: [
-  OutlinedButton(
-  onPressed: ()
-  {
-  acceptPressed(inputName.getText(), inputCity.getText(),inputCountry.getText(), int.parse(inputAge.getText()), context);
-  },
-  child: Text('Aceptar'),
-  ),
-  OutlinedButton(
-  onPressed: ()
-  {
-  Navigator.of(context).popAndPushNamed('/Login');
-  },
-  child: Text('Cancelar'),
-  )
-  ],
-  ),
-  txtMensajes,
-  ],
-  ),
-  ),
-  );
-
+    appBar: AppBar(
+    title: Text('On Boarding'),
+      ),
+    backgroundColor: Colors.lightGreenAccent,
+    body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          inputName,
+          inputCity,
+          inputCountry,
+          inputAge,
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          OutlinedButton(
+            onPressed: ()
+            {
+              acceptPressed(inputName.getText(), inputCity.getText(),inputCountry.getText(), int.parse(inputAge.getText()), context);
+            },
+              child: Text('Aceptar'),
+            ),
+            OutlinedButton(
+            onPressed: ()
+              {
+              Navigator.of(context).popAndPushNamed('/Login');
+              },
+              child: Text('Cancelar'),
+             )
+          ],
+        ),
+    txtMensajes,
+    ],
+    ),
+    ),
+    );
   }
   }

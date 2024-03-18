@@ -21,6 +21,12 @@ class _HomeView2State extends State<HomeView2>
   String sNombre = '--';
   bool blIsBottonVisble = true;
 
+  /*@override
+  void initState()
+  {
+    super.initState();
+  }
+*/
   void actualizarNombre() async
   {
     //final perfilesRef = db.collection('perfiles').doc();

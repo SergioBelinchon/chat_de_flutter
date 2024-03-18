@@ -15,7 +15,7 @@ import 'login_views/RegisterView2.dart';
 class App2 extends StatelessWidget {
 
   App2({Key? key}) : super (key: key);
-  FirebaseFirestore db = FirebaseFirestore.instance;
+  //FirebaseFirestore db = FirebaseFirestore.instance;
 
   String isUserLogged()
   {
