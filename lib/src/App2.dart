@@ -33,7 +33,7 @@ class App2 extends StatelessWidget {
         fontSize: 20.0,
       );
 
-      return '/Home';
+      return '/OnBoarding';
     }
   }
 
