@@ -52,39 +52,36 @@ class _HomeView2State extends State<HomeView2>
         print('No such document.');
       }
 
-    DataHolder().pruebaFuncion();
     }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chatdar'),
+        title: Text('Rooms'),
       ),
       //backgroundColor: Colors.orangeAccent,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(DataHolder().sMensaje+' '+sNombre),
-
-            if(blIsBottonVisble)OutlinedButton(
-              onPressed: ()
-              {
-                actualizarNombre();
-             },
-              child: Text('Refresh'),
+        child: ListView(
+          padding: const EdgeInsets.all(8),
+          children: <Widget>[
+            Container(
+              height: 50,
+              color: Colors.amber[600],
+              child: const Center(child: Text('Entry A')),
             ),
-            OutlinedButton(
-                onPressed:()
-              {
-                  FirebaseAuth.instance.signOut();
-                  Navigator.of(context).popAndPushNamed('/Login');
-                  },
-                child: Text('Logout'),
-              ),
-            ],
-         ),
+            Container(
+              height: 50,
+              color: Colors.amber[500],
+              child: const Center(child: Text('Entry B')),
+            ),
+            Container(
+              height: 50,
+              color: Colors.amber[100],
+              child: const Center(child: Text('Entry C')),
+            ),
+          ],
+        ),
         ),
       );
    }
