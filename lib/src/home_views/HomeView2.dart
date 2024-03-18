@@ -66,7 +66,7 @@ class _HomeView2State extends State<HomeView2>
       ),
       //backgroundColor: Colors.orangeAccent,
       body: Center(
-        child: ListView.builder(
+        child: ListView.separated(
           padding: const EdgeInsets.all(8),
           itemCount: entries.length,
           itemBuilder: (BuildContext context, int index)
@@ -76,7 +76,8 @@ class _HomeView2State extends State<HomeView2>
                 color: Colors.amber[colorCodes[index]],
                 child: Center(child: Text('Entry ${entries[index]}')),
               );
-            }
+            },
+            separatorBuilder: (BuildContext context, int index) => const Divider(),
         ),
         ),
       );
