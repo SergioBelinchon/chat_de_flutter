@@ -56,31 +56,27 @@ class _HomeView2State extends State<HomeView2>
 
   @override
   Widget build(BuildContext context) {
+
+    final List<String> entries = <String>['A', 'B', 'C', 'D', 'F'];
+    final List<int> colorCodes = <int>[600, 500, 100, 200, 800];
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Rooms'),
       ),
       //backgroundColor: Colors.orangeAccent,
       body: Center(
-        child: ListView(
+        child: ListView.builder(
           padding: const EdgeInsets.all(8),
-          children: <Widget>[
-            Container(
-              height: 50,
-              color: Colors.amber[600],
-              child: const Center(child: Text('Entry A')),
-            ),
-            Container(
-              height: 50,
-              color: Colors.amber[500],
-              child: const Center(child: Text('Entry B')),
-            ),
-            Container(
-              height: 50,
-              color: Colors.amber[100],
-              child: const Center(child: Text('Entry C')),
-            ),
-          ],
+          itemCount: entries.length,
+          itemBuilder: (BuildContext context, int index)
+            {
+              return Container(
+                height: 50,
+                color: Colors.amber[colorCodes[index]],
+                child: Center(child: Text('Entry ${entries[index]}')),
+              );
+            }
         ),
         ),
       );
