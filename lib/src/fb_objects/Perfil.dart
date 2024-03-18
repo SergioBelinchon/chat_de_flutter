@@ -5,12 +5,17 @@ class Perfil {
   final String? city;
   final String? country;
   final int? age;
+  final List<String>? friends;
+  final List<DocumentReference>? rooms;
+
 
   Perfil({
     this.name= '',
     this.city= '',
     this.country= '',
     this.age= 0,
+    this.friends = const[],
+    this.rooms = const[],
   });
 
   factory Perfil.fromFirestore(
@@ -23,6 +28,8 @@ class Perfil {
       city: data?['city'],
       country: data?['country'],
       age: data?['age'],
+      friends: data?['friends'] is Iterable? List.from(data?['friends']) : null,
+      rooms: data?['rooms'] is Iterable? List.from(data?['rooms']) : null,
     );
   }
 
@@ -32,6 +39,9 @@ class Perfil {
       if (city != null) "city": city,
       if (country != null) "country": country,
       if (age != 0) "age": age,
+      if (friends!.isNotEmpty) "friends": friends,
+      if (rooms!.isNotEmpty) "rooms": rooms,
+
     };
   }
 }

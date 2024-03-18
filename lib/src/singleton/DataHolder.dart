@@ -11,12 +11,17 @@ class DataHolder
 
   DataHolder._internal()
   {
-    sMensaje = 'Loren Ipsun';
+    sMensaje = 'Loren ipsum';
   }
 
   factory DataHolder()
   {
     return _dataHolder;
+  }
+
+  void pruebaFuncion()
+  {
+
   }
 }
 

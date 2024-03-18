@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../custom_views/RFInputText.dart';
+import '../singleton/DataHolder.dart';
 
 class LoginView2 extends StatelessWidget
 {
@@ -33,6 +34,8 @@ class LoginView2 extends StatelessWidget
       print(e);
     }
     print('USUARIO CREADO CORRECTAMENTE');
+    DataHolder().pruebaFuncion();
+
   }
 
   @override

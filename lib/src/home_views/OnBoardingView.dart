@@ -45,6 +45,7 @@ class OnBoardingView extends StatefulWidget {
       {
         Navigator.of(context).popAndPushNamed('/Home');
       }
+    DataHolder().pruebaFuncion();
   }
 
   void acceptPressed(String name, String city, String country, int age, BuildContext context) async

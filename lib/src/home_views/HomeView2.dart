@@ -1,9 +1,8 @@
+import 'package:chat_de_flutter/src/fb_objects/Perfil.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../fb_objects/Perfil2.dart';
 import '../singleton/DataHolder.dart';
 
 class HomeView2 extends StatefulWidget
@@ -39,12 +38,13 @@ class _HomeView2State extends State<HomeView2>
 
 
     final docSnap = await docRef.get();
-    final perfilUsuario = docSnap.data();
-    if(perfilUsuario != null)
+   // final perfilUsuario = docSnap.data();
+    DataHolder().perfil = docSnap.data()!;
+    if(DataHolder().perfil != null)
       {
-        print(perfilUsuario.age);
+        print(DataHolder().perfil.age);
         setState(() {
-          sNombre = perfilUsuario.name!;
+          sNombre = DataHolder().perfil.name!;
         });
       }
     else
@@ -52,6 +52,7 @@ class _HomeView2State extends State<HomeView2>
         print('No such document.');
       }
 
+    DataHolder().pruebaFuncion();
     }
 
   @override
