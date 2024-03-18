@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../fb_objects/Perfil2.dart';
+import '../singleton/DataHolder.dart';
 
 class HomeView2 extends StatefulWidget
 {
@@ -21,16 +22,17 @@ class _HomeView2State extends State<HomeView2>
   String sNombre = '--';
   bool blIsBottonVisble = true;
 
-  /*@override
+  @override
   void initState()
   {
     super.initState();
   }
-*/
+
   void actualizarNombre() async
   {
     //final perfilesRef = db.collection('perfiles').doc();
-    String? idUser = 'Rs4B0yEhP0jtmQ216Jrl';
+    //String? idUser = 'Rs4B0yEhP0jtmQ216Jrl';
+    String? idUser = FirebaseAuth.instance.currentUser?.uid;
     final docRef = db.collection('perfiles')
         .doc(idUser).withConverter(fromFirestore: Perfil.fromFirestore,
         toFirestore: (Perfil perfil, _) => perfil.toFirestore());
@@ -63,7 +65,7 @@ class _HomeView2State extends State<HomeView2>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('HOME VIEW BIENVENIDO ' +sNombre),
+            Text(DataHolder().sMensaje+' '+sNombre),
 
             if(blIsBottonVisble)OutlinedButton(
               onPressed: ()

@@ -1,3 +1,4 @@
+import 'package:chat_de_flutter/src/singleton/DataHolder.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +9,7 @@ import '../fb_objects/Perfil.dart';
 
 class OnBoardingView extends StatefulWidget {
 
-  OnBoardingView({Key? key}) : super(key: key);
+  const OnBoardingView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState()
@@ -27,6 +28,7 @@ class OnBoardingView extends StatefulWidget {
   void initState()
   {
     super.initState();
+    DataHolder().sMensaje = 'HOLA DESDE ONBOARDING';
     checkExistingProfile;
   }
 
